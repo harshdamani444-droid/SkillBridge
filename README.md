@@ -2,11 +2,15 @@
 
 **An AI-Powered ATS Resume Analyzer, Skill-Gap Diagnostic & Career Readiness Platform**
 
+[![Live Demo](https://img.shields.io/badge/🌐_Live_Demo-skillbridge--x09a.onrender.com-00C7B7?style=for-the-badge&logo=render&logoColor=white)](https://skillbridge-x09a.onrender.com)
+
 [![React](https://img.shields.io/badge/Frontend-React_18_%7C_Vite_5-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Flask](https://img.shields.io/badge/Backend-Flask_3.0_%7C_Python_3-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
-[![Database](https://img.shields.io/badge/Database-Neon_PostgreSQL_%7C_SQLite-00E599?logo=postgresql&logoColor=white)](https://neon.tech/)
+[![Database](https://img.shields.io/badge/Database-Neon_PostgreSQL-00E599?logo=postgresql&logoColor=white)](https://neon.tech/)
 [![AI](https://img.shields.io/badge/AI-Claude_3.5_Sonnet-D97706?logo=anthropic&logoColor=white)](https://anthropic.com/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
+> 🔗 **Live Production App:** [https://skillbridge-x09a.onrender.com](https://skillbridge-x09a.onrender.com)
 
 ---
 
@@ -261,4 +265,5 @@ Edit `Backend/.env` to configure features:
 ## 👤 Author
 
 Developed by **[Harsh Damani](https://github.com/harshdamani444-droid)**  
-GitHub: [@harshdamani444-droid](https://github.com/harshdamani444-droid)
+- GitHub: [@harshdamani444-droid](https://github.com/harshdamani444-droid)
+- Live App: [https://skillbridge-x09a.onrender.com](https://skillbridge-x09a.onrender.com)
