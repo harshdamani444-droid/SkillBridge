@@ -56,7 +56,16 @@ def create_app():
     app.register_blueprint(courses_bp, url_prefix="/api/courses")
     app.register_blueprint(user_bp, url_prefix="/api/user")
 
-    # ── Health check ──────────────────────────────────────
+    # ── Root & Health check ───────────────────────────────
+    @app.route("/")
+    def index():
+        return {
+            "service": "SkillBridge API",
+            "status": "online",
+            "environment": env,
+            "health_check": "/api/health"
+        }
+
     @app.route("/api/health")
     def health():
         return {"status": "ok", "service": "SkillBridge API", "environment": env}
