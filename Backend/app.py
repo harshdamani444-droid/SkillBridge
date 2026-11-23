@@ -1,6 +1,6 @@
 import os
 from mail_config import mail
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
 from flask_cors import CORS
@@ -56,19 +56,35 @@ def create_app():
     app.register_blueprint(courses_bp, url_prefix="/api/courses")
     app.register_blueprint(user_bp, url_prefix="/api/user")
 
-    # ── Root & Health check ───────────────────────────────
-    @app.route("/")
-    def index():
+    # ── Static Frontend & Health check ────────────────────
+    static_dir = os.path.join(os.path.dirname(__file__), "static")
+
+    @app.route("/api/health")
+    def health():
+        return {"status": "ok", "service": "SkillBridge API", "environment": env}
+
+    @app.route("/assets/<path:filename>")
+    def serve_assets(filename):
+        assets_dir = os.path.join(static_dir, "assets")
+        if os.path.exists(os.path.join(assets_dir, filename)):
+            return send_from_directory(assets_dir, filename)
+        return {"error": "Asset not found"}, 404
+
+    @app.route("/", defaults={"path": ""})
+    @app.route("/<path:path>")
+    def serve_frontend(path):
+        if path.startswith("api"):
+            return {"error": "Endpoint not found"}, 404
+        if path and os.path.exists(os.path.join(static_dir, path)):
+            return send_from_directory(static_dir, path)
+        if os.path.exists(os.path.join(static_dir, "index.html")):
+            return send_from_directory(static_dir, "index.html")
         return {
             "service": "SkillBridge API",
             "status": "online",
             "environment": env,
             "health_check": "/api/health"
         }
-
-    @app.route("/api/health")
-    def health():
-        return {"status": "ok", "service": "SkillBridge API", "environment": env}
 
     return app
 
